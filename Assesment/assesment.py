@@ -1,5 +1,5 @@
 from tkinter import*
-
+from tkinter import messagebox
 def quit():
     main_window.destroy()
 
@@ -25,13 +25,21 @@ def print_hire_details ():
             name_count += 1
 
 def append_name ():
-    customer_details.append([entry_customer_name.get(),entry_receipt_number.get(),entry_hire_item.get(),entry_number_hired.get()])
+    customer_details.append([entry_customer_name.get(),entry_receipt_number.get(),entry_item_hired.get(),entry_number_hired.get()])
     current_customer_name = entry_customer_name.get()
     entry_customer_name.delete(0,'end')
     entry_receipt_number.delete(0,'end')
-    entry_hire_item.delete(0,'end')
+    entry_item_hired.delete(0,'end')
     entry_number_hired.delete(0,'end')
     counters['total_entries'] += 1
+    if entry_number_hired >= max_num:
+        error_message = "Number Hired should be between 1 and 500."
+        messagebox.showinfo("Error", error_message)
+        return
+    elif entry_number_hired <= min_num:
+        print("Number Hired should be between 1 and 500.")
+        messagebox.showinfo("Error", error_message)
+        return
 
 def delete_row ():
     del customer_details[int(delete_item.get())]
