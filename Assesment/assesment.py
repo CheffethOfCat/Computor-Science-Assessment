@@ -33,6 +33,11 @@ def append_name ():
     entry_number_hired.delete(0,'end')
     counters['total_entries'] += 1
 
+def delete_row ():
+    del customer_details[int(delete_item.get())]
+    counters['total_entries'] -= 1
+    delete_item.delete(0,'end')
+
 main_window=Tk()
 customer_details=[]
 counters = {'total_entries':0,'name_count':0}
