@@ -38,6 +38,22 @@ def delete_row ():
     counters['total_entries'] -= 1
     delete_item.delete(0,'end')
 
+def main():
+    total_entries=0
+    Label(main_window, text="Customer Name") .grid(column=0, row=0)
+    Label(main_window, text="Receipt Number") .grid(column=0, row=1)
+    Label(main_window, text="Item Hired") .grid(column=0, row=2)
+    Label(main_window, text="Number Hired") .grid(column=0, row=3)
+    Label(main_window, text="Row #") .grid(column=0, row=4)
+
+    Button(main_window, text="Quit" , command=quit, width=10).grid(column=2, row=0)
+    Button(main_window, text="Append Details",command=append_name) .grid(column=2, row=1)
+    Button(main_window, text="Print Details",command=print_hire_details,width=10) .grid(column=2, row=2)
+    Button(main_window, text="Delete Row",command=delete_row,width=10) .grid(column=2, row=3)
+    main_window.mainloop()
+
+counters = {'total_entries': 0, 'name_count': 0}
+
 main_window=Tk()
 customer_details=[]
 counters = {'total_entries':0,'name_count':0}
