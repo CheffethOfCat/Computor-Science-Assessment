@@ -54,16 +54,30 @@ def main():
 
 counters = {'total_entries': 0, 'name_count': 0}
 
+def validate_letter_space_input(new_value):
+    if new_value.replace(" ", "").isalpha() or new_value == "":
+        return True
+    return False
+
+def validate_number(new_value):
+    if new_value.isdigit() or new_value == "":
+        return True
+    return False
+
 main_window=Tk()
 customer_details=[]
 counters = {'total_entries':0,'name_count':0}
-entry_customer_name=Entry(main_window)
+entry_customer_name = Entry(main_window, validate="key")
+entry_customer_name['validatecommand'] = (entry_customer_name.register(validate_letter_space_input), '%P')
 entry_customer_name.grid(column=1, row=0)
-entry_receipt_number=Entry(main_window)
+entry_receipt_number = Entry(main_window, validate="key")
+entry_receipt_number['validatecommand'] = (entry_receipt_number.register(validate_number), '%P')
 entry_receipt_number.grid(column=1, row=1)
-entry_hire_item=Entry(main_window)
-entry_hire_item.grid(column=1, row=2)
-entry_number_hired=Entry(main_window)
+entry_item_hired = Entry(main_window, validate="key")
+entry_item_hired['validatecommand'] = (entry_item_hired.register(validate_letter_space_input), '%P')
+entry_item_hired.grid(column=1, row=2)
+entry_number_hired = Entry(main_window, validate="key")
+entry_number_hired['validatecommand'] = (entry_number_hired.register(validate_number), '%P')
 entry_number_hired.grid(column=1, row=3)
 delete_item = Entry(main_window)
 delete_item.grid(column=1,row=4)
